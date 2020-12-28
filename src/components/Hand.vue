@@ -1,7 +1,7 @@
 <template>
   <ul id="hand">
-    <li v-for="(x, index) in hand" :key="index">
-      <Card :pos="x" @click="doSomething(index)"/>
+    <li v-for="(x, index) in hand.cards" :key="index">
+      <Card :cardInfo="x" :faction="faction" @click="doSomething(index)"/>
       <!--      <Placeholder/>-->
     </li>
   </ul>
@@ -9,13 +9,15 @@
 
 <script lang="ts">
 import Card from "./Card.vue";
-import publicStore from "@/publicStore";
 import {Options, Vue} from "vue-class-component";
-// import Placeholder from "@/components/Placeholder";
+import publicStore from "@/publicStore";
+import IRHand from "../milito-entities/IRHand";
+import FactionsEnum from "../milito-entities/FactionsEnum";
 
 @Options({
   props: {
-    hand: Array
+    hand: IRHand,
+    faction: FactionsEnum,
   },
   components: {
     // Placeholder,
@@ -31,7 +33,8 @@ import {Options, Vue} from "vue-class-component";
 })
 
 export default class Hand extends Vue {
-  hand!: Array<number>;
+  hand!: IRHand
+  faction!: FactionsEnum
 }
 </script>
 

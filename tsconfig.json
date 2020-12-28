@@ -18,9 +18,12 @@
       "chai"
     ],
     "paths": {
+      "@milito-entities/*": [
+        "src/milito-entities/*"
+      ],
       "@/*": [
         "src/*"
-      ]
+      ],
     },
     "lib": [
       "esnext",
@@ -30,6 +33,7 @@
     ]
   },
   "include": [
+    "src/milito-entities/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",

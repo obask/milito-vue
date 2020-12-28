@@ -3,35 +3,38 @@
     <table>
       <tr>
         <td v-for="(x, index) in table.enemy_row_2" :key="index">
-          <PlaceHolder />
+          <PlaceHolder/>
         </td>
       </tr>
       <tr>
         <td v-for="(x, index) in table.enemy_row_2" :key="index">
-          <PlaceHolder />
+          <PlaceHolder/>
         </td>
       </tr>
       <tr>
         <td v-for="(x, index) in table.territory_row" :key="index">
           <Card
-            @click.native="doSomething(index)"
-            v-if="-1 != x"
-            :pos="x"
-            style="transform: rotate(90deg)"
+              @click.native="doSomething(index)"
+              v-if="x !== undefined"
+              :cardInfo="x"
+              :faction="this.myFaction"
+              style="transform: rotate(90deg)"
           />
-          <PlaceHolder v-else />
+          <PlaceHolder v-else/>
         </td>
       </tr>
       <tr>
         <td v-for="(x, index) in table.player_row_1" :key="index">
-          <Card @click.native="doSomething(index)" v-if="-1 != x" :pos="x" />
-          <PlaceHolder @click.native="doSomething(index)" v-else />
+          <Card @click.native="doSomething(index)" v-if="x !== undefined" :cardInfo="x"
+                :faction="this.myFaction"/>
+          <PlaceHolder @click.native="doSomething(index)" v-else/>
         </td>
       </tr>
       <tr>
         <td v-for="(x, index) in table.player_row_2" :key="index">
-          <Card @click.native="doSomething(index)" v-if="-1 != x" :pos="x" />
-          <PlaceHolder @click.native="doSomething(index)" v-else />
+          <Card @click.native="doSomething(index)" v-if="x !== undefined" :cardInfo="x"
+                :faction="this.myFaction"/>
+          <PlaceHolder @click.native="doSomething(index)" v-else/>
         </td>
       </tr>
     </table>
@@ -42,7 +45,8 @@
 import PlaceHolder from "./PlaceHolder.vue";
 import Card from "./Card.vue";
 import publicStore from "../publicStore";
-import { Options, Vue } from "vue-class-component";
+import {Options, Vue} from "vue-class-component";
+import FactionsEnum from "../milito-entities/FactionsEnum";
 
 @Options({
   components: {
@@ -53,12 +57,17 @@ import { Options, Vue } from "vue-class-component";
     table: Object
   },
   methods: {
-    doSomething: function(index: number) {
+    doSomething: function (index: number) {
       publicStore.clickOnPlayerRow(index);
       console.log(index);
       return "DSAD";
     }
-  }
+  },
+  data() {
+    return {
+      myFaction: FactionsEnum.AncientBritish,
+    }
+  },
 })
 export default class PlayerTable extends Vue {
   table!: Record<string, Array<number>>;

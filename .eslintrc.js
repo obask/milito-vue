@@ -7,7 +7,7 @@ module.exports = {
     "plugin:vue/vue3-essential",
     "eslint:recommended",
     "@vue/typescript/recommended",
-    "@vue/prettier",
+    // "@vue/prettier",
     "@vue/prettier/@typescript-eslint"
   ],
   parserOptions: {
@@ -18,6 +18,8 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "semi": ["off", "always"],
     "vue/no-deprecated-v-on-native-modifier": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
   },
   overrides: [
     {

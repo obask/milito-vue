@@ -1,13 +1,15 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import store from "./publicStore";
+import IRPlayerState from "@milito-entities/IRPlayerState";
 
 // @ts-ignore
-document.app = createApp(App).mount("#app");
+window.app = createApp(App).mount("#app");
 
-
-// @ts-ignore
-console.log(document.app)
+console.log("OLOLO1");
 
 // @ts-ignore
-document.store = store
+console.log(window.app)
+
+// @ts-ignore
+window.store = store

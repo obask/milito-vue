@@ -5,9 +5,10 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
+import {Vue} from "vue-class-component"
 
-export default class PlaceHolder extends Vue {}
+export default class PlaceHolder extends Vue {
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

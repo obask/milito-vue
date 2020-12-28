@@ -24,7 +24,7 @@ class PlayerState {
     hand: Array<number>
     state: string
     cardsToDiscard: number
-    selected_card?: number
+    selectedCard?: number
     selected_column?: number
     discarded_cards: Array<number>
 
@@ -33,7 +33,7 @@ class PlayerState {
         this.hand = [1, 3, 2, 2, 2]
         this.state = SELECT_CARDS_STATE
         this.cardsToDiscard = 0
-        this.selected_card = undefined
+        this.selectedCard = undefined
         this.selected_column = undefined
         this.discarded_cards = []
     }
@@ -65,7 +65,7 @@ export default {
         //     .then(response => console.log(response.json()))
         switch (this.state.state) {
             case SELECT_CARDS_STATE:
-                this.state.selected_card = position
+                this.state.selectedCard = position
                 this.state.state = SELECT_COLUMN_TO_PLAY_STATE
                 break
             case DISCARD_CARDS_FROM_HAND_STATE:
@@ -77,7 +77,7 @@ export default {
                     const requestOptions = {
                         method: "POST",
                         headers: {"Content-Type": "application/json"},
-                        mode: <RequestMode>"cors",
+                        mode: "cors" as RequestMode,
                         body: JSON.stringify(this.state)
                     }
                     fetch("http://localhost:3000/ololo", requestOptions)
